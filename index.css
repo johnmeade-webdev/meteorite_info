@@ -1,0 +1,74 @@
+* {
+  box-sizing: border-box;
+}
+
+#page_container {
+  width: calc(100vw - 20px);
+}
+
+#pagination {
+  margin: 1rem 0;
+  text-align: center;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+#searchText,
+#submitSearchText {
+  font-size: 1rem;
+}
+
+#pagination button {
+  font-size: 1rem;
+  font-family: "Kodchasan", palatino;
+}
+
+#pagination div {
+    margin: 0 2rem;
+}
+
+/* TABLE STYLES */
+
+table {
+    font-family: "Kodchasan", palatino;
+  border-collapse: collapse;
+  margin: auto;
+  border: 2px solid black;
+}
+
+th,
+td {
+    padding: 5px 15px;
+}
+
+th {
+  text-align: left;
+  background-color: rgb(178, 234, 255);
+  font-size: 0.85rem;
+}
+
+tr:nth-child(odd) {
+  background-color: rgb(242, 244, 247);
+}
+
+tr {
+  border: 0.25px solid rgb(206, 215, 219);
+}
+
+td {
+  font-family: "Kodchasan", palatino;
+  font-size: 0.75rem;
+}
+
+td:nth-child(6),
+td:nth-child(7),
+td:nth-child(8) {
+  text-align: right;
+}
+
+th:nth-child(6),
+th:nth-child(7),
+th:nth-child(8) {
+  text-align: right;
+}
