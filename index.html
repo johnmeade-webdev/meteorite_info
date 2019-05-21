@@ -15,22 +15,39 @@
       href="https://fonts.googleapis.com/css?family=Kodchasan:200,600&display=swap"
       rel="stylesheet"
     />
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto:100,500&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="index.css" />
   </head>
 
   <body>
     <div id="page_container">
-      <div id="pagination">
+      <header>
+        <h1>EXPLORE |</h1>
+        <h2>NASA METEORITE DATA</h2>
+      </header>
+      <section id="meteorData">
+        <div id="pagination">
           <div>
-            <input type="search" id="searchText" value='' placeholder="search by name">
-            <input type="submit" id="submitSearchText" value="Search">
+            <form action="#" onsubmit="search()">
+              <input
+                type="search"
+                id="searchText"
+                value=""
+                placeholder="search by name"
+              />
+              <input type="submit" id="submitSearchText" value="Search" />
+            </form>
           </div>
           <div>
             <button onclick="backPage()">Previous</button>
             <button onclick="forwardPage()">Next</button>
           </div>
-      </div>
-      <table id="table"></table>
+        </div>
+        <table id="table"></table>
+      </section>
     </div>
     <script src="index.js" async defer></script>
   </body>
