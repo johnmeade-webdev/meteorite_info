@@ -158,7 +158,6 @@ function search() {
   if (document.querySelector("#startsWith").checked) {
     let search = encodeURIComponent(cappedSearchText);
     let url = `${searchByNameStart[0]}${search}${searchByNameStart[1]}`;
-    console.log(`search: ${search}\nurl: ${url}`);
     searchAPICall(url);
   } else if (document.querySelector("#includes").checked) {
     let search = encodeURIComponent(searchText);
@@ -267,3 +266,5 @@ function clearData() {
     table.removeChild(table.firstChild);
   }
 }
+
+
