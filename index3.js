@@ -6,7 +6,7 @@ let isGeneral = true;
 let searchMeteoriteInfo = [];
 let searchCurrentIndex = 0;
 
-document.querySelector("#submitSearchText").addEventListener('submit', function(event){
+document.querySelector("form").addEventListener('submit', function(event){
     event.preventDefault();
 })
 
@@ -35,7 +35,6 @@ function generalAPICall(startIndex = 0, stopIndex = startIndex + 30) {
     .then(data => {
       searchOffset += searchLimit;
       generalMeteoriteInfo = [...generalMeteoriteInfo, ...data];
-      console.log(`Start Index is: ${startIndex}\nStop Index is: ${stopIndex}`);
       populateData(generalMeteoriteInfo, startIndex, stopIndex);
     })
     .catch(err => console.log(err));
@@ -46,6 +45,7 @@ generalAPICall();
 /* SEARCH API CALL */
 /* This call is intended to retrieve ALL information about the requested search */
 /* Pagination is implemented, but it's done in-house, not through subsequent API calls */
+
 let searchByNameStart = [
   "https://data.nasa.gov/resource/gh4g-9sfh.json?$where=starts_with(name,%20%27",
   "%27)"
@@ -56,7 +56,7 @@ let searchByNameIncludes = [
 ];
 let searchByNameExact = "https://data.nasa.gov/resource/gh4g-9sfh.json?name=";
 
-function searchAPICall(url) {
+function searchAPICall(url, tryAgain = false, tryURL = '') {
   generalCurrentIndex = 0;
   searchCurrentIndex = 0;
   isGeneral = false;
@@ -65,11 +65,15 @@ function searchAPICall(url) {
     .then(checkStatus)
     .then(res => res.json())
     .then(data => {
-      searchMeteoriteInfo = data;
-      if (searchMeteoriteInfo.length > 0) {
+      searchMeteoriteInfo = [...searchMeteoriteInfo, ...data];
+      if (searchMeteoriteInfo.length > 0 && tryAgain == false) {
         populateData(searchMeteoriteInfo, 0, 30);
       } else {
-        table.innerText = "No Results Found";
+          if(tryAgain){
+              searchAPICall(tryURL, false);
+          } else {
+            table.innerText = "No Results Found";
+          }
       }
     })
     .catch(err => console.log(err));
@@ -150,6 +154,7 @@ function search() {
   }
 
   clearData();
+  meteorSearchInfo = [];
 
   if (document.querySelector("#startsWith").checked) {
     let search = encodeURIComponent(cappedSearchText);
@@ -158,7 +163,9 @@ function search() {
   } else if (document.querySelector("#includes").checked) {
     let search = encodeURIComponent(searchText);
     let url = `${searchByNameIncludes[0]}${search}${searchByNameIncludes[1]}`;
-    searchAPICall(url);
+    let search2 = encodeURIComponent(cappedSearchText);
+    let url2 = `${searchByNameStart[0]}${search2}${searchByNameStart[1]}`;
+    searchAPICall(url2, true, url);
   } else {
     let search = encodeURIComponent(cappedSearchText);
     let url = `${searchByNameExact}${search}`;
