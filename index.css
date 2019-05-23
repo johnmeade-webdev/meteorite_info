@@ -11,10 +11,10 @@ body {
 }
 
 header {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: "Roboto";
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Roboto";
 }
 
 header h1 {
@@ -29,7 +29,7 @@ header h2 {
   font-size: 1.75rem;
   font-weight: 500;
   padding-left: 2rem;
-  maring: 0 0;
+  margin: 0 0;
 }
 
 #meteorData {
@@ -39,31 +39,58 @@ header h2 {
 
 #pagination {
   margin: 2rem auto;
-  padding: 1rem 0;
+  padding: 1rem 1rem;
   text-align: center;
   display: flex;
-  align-items: flex-end;
-  justify-content: center;
+  align-items: flex-start;
+  justify-content: space-evenly;
   width: calc(100% - 2rem);
   box-shadow: 0px 2px 10px rgb(55, 57, 58);
   background-color: rgb(218, 227, 242);
 }
 
-#searchText,
-#submitSearchText {
-  font-size: 1rem;
+#searchControls {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-#pagination button {
+#searchParams {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  font-family: "Roboto";
+  font-weight: 100;
+  font-size: 0.75rem;
+}
+
+#searchText,
+#submitSearchText {
+  font-size: 1.5rem;
+  border: 1px solid rgb(218, 227, 242);
+  border-radius: 5px;
+  font-family: "Roboto";
+  font-weight: 100;
+}
+
+#searchText {
+  padding-left: 0.5rem;
+}
+
+#paginationButtons button {
   font-size: 1rem;
   font-family: "Roboto";
   font-weight: 100;
-  border-radius: 5px;
-  box-shadow: 1px 1px 3px; 
+  border-radius: 3px;
+  box-shadow: 0px 2px 10px rgb(55, 57, 58);
+  background-color: rgb(218, 227, 242);
 }
 
-#pagination div {
-  margin: 0 2rem;
+#paginationButtons {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 1rem;
 }
 
 /* TABLE STYLES */
@@ -74,8 +101,7 @@ table {
   background-color: rgb(218, 227, 242);
   margin: auto;
   margin-bottom: 2rem;
-  box-shadow: 0px 10px 25px rgb(55, 57, 58);
-  width: calc(100% - 2rem);
+  width: calc(100% - 1rem);
 }
 
 th,
@@ -87,7 +113,8 @@ th {
   font-family: "Roboto";
   font-weight: 500;
   text-align: left;
-  background-color: rgb(178, 234, 255);
+  background-color: rgb(81, 118, 181);
+  color: white;
   font-size: 0.85rem;
 }
 
@@ -118,4 +145,58 @@ th:nth-child(6),
 th:nth-child(7),
 th:nth-child(8) {
   text-align: right;
+}
+
+@media only screen and (max-width: 900px) {
+  table {
+    width: 500px;
+  }
+
+  td {
+    font-size: 0.5rem;
+  }
+
+  #tableContainer {
+    overflow: scroll;
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  th,
+  td {
+    padding: 5px 5px;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  header {
+    flex-direction: column;
+  }
+  #meteorData {
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: 475px) {
+  #searchParams div {
+    font-size: 0.5rem;
+    display: flex;
+    align-items: center;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  header h2 {
+    font-size: 1rem;
+  }
+
+  #page_container {
+    border: 2px solid black;
+  }
+
+  #pagination {
+    margin: 1rem 0;
+    width: 100%;
+    border: 2px solid;
+  }
 }

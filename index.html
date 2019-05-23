@@ -30,7 +30,7 @@
       </header>
       <section id="meteorData">
         <div id="pagination">
-          <div>
+          <div id="searchControls">
             <form action="#" onsubmit="search()">
               <input
                 type="search"
@@ -40,15 +40,42 @@
               />
               <input type="submit" id="submitSearchText" value="Search" />
             </form>
-          </div>
-          <div>
-            <button onclick="backPage()">Previous</button>
-            <button onclick="forwardPage()">Next</button>
+            <div id="searchParams">
+              <div>
+                <input
+                  type="radio"
+                  name="searchParams"
+                  id="startsWith"
+                  checked
+                />
+                <label for="startsWiths">name starts with</label>
+              </div>
+              <div>
+                <input
+                  type="radio"
+                  name="searchParams"
+                  id="includes"
+                  unchecked
+                />
+                <label for="startsWiths">name includes</label>
+              </div>
+              <div>
+                <input type="radio" name="searchParams" id="exact" unchecked />
+                <label for="startsWiths">exact name</label>
+              </div>
+            </div>
           </div>
         </div>
-        <table id="table"></table>
+        <div id='paginationButtons'>
+          <button onclick="backPage()">Previous</button>
+          <button onclick="nextPage()">Next</button>
+        </div>
+        <div id="tableContainer">
+          <table id="table"></table>
+        </div>
+        
       </section>
     </div>
-    <script src="index.js" async defer></script>
+    <script src="index3.js" async defer></script>
   </body>
 </html>
