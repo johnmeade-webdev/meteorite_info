@@ -6,6 +6,10 @@ let isGeneral = true;
 let searchMeteoriteInfo = [];
 let searchCurrentIndex = 0;
 
+document.querySelector("#submitSearchText").addEventListener('submit', function(event){
+    event.preventDefault();
+})
+
 /* GLOBAL API CALL */
 /* This call is intended for paging through ALL information without searching */
 /* Forward pagination is handled through subsequent uses of this call, backward pagination is handled in-house */
@@ -113,10 +117,25 @@ function backPage() {
       generalCurrentIndex,
       generalCurrentIndex + 30
     );
+  } else {
+    if (searchCurrentIndex - 60 >= 0) {
+        searchCurrentIndex -= 60;
+      } else if (searchCurrentIndex <= 30) {
+        return;
+      } else {
+        searchCurrentIndex = 0;
+      }
+      clearData();
+      populateData(
+        searchMeteoriteInfo,
+        searchCurrentIndex,
+        searchCurrentIndex + 30
+      );
   }
 }
 
 /* SEARCH FUNCTION */
+
 
 function search() {
   let searchText = document.querySelector("#searchText").value.toLowerCase();
