@@ -6,9 +6,9 @@ let isGeneral = true;
 let searchMeteoriteInfo = [];
 let searchCurrentIndex = 0;
 
-document.querySelector("form").addEventListener('submit', function(event){
-    event.preventDefault();
-})
+document.querySelector("form").addEventListener("submit", function(event) {
+  event.preventDefault();
+});
 
 /* GLOBAL API CALL */
 /* This call is intended for paging through ALL information without searching */
@@ -56,7 +56,7 @@ let searchByNameIncludes = [
 ];
 let searchByNameExact = "https://data.nasa.gov/resource/gh4g-9sfh.json?name=";
 
-function searchAPICall(url, tryAgain = false, tryURL = '') {
+function searchAPICall(url, tryAgain = false, tryURL = "") {
   generalCurrentIndex = 0;
   searchCurrentIndex = 0;
   isGeneral = false;
@@ -69,11 +69,11 @@ function searchAPICall(url, tryAgain = false, tryURL = '') {
       if (searchMeteoriteInfo.length > 0 && tryAgain == false) {
         populateData(searchMeteoriteInfo, 0, 30);
       } else {
-          if(tryAgain){
-              searchAPICall(tryURL, false);
-          } else {
-            table.innerText = "No Results Found";
-          }
+        if (tryAgain) {
+          searchAPICall(tryURL, false);
+        } else {
+          table.innerText = "No Results Found";
+        }
       }
     })
     .catch(err => console.log(err));
@@ -123,25 +123,25 @@ function backPage() {
     );
   } else {
     if (searchCurrentIndex - 60 >= 0) {
-        searchCurrentIndex -= 60;
-      } else if (searchCurrentIndex <= 30) {
-        return;
-      } else {
-        searchCurrentIndex = 0;
-      }
-      clearData();
-      populateData(
-        searchMeteoriteInfo,
-        searchCurrentIndex,
-        searchCurrentIndex + 30
-      );
+      searchCurrentIndex -= 60;
+    } else if (searchCurrentIndex <= 30) {
+      return;
+    } else {
+      searchCurrentIndex = 0;
+    }
+    clearData();
+    populateData(
+      searchMeteoriteInfo,
+      searchCurrentIndex,
+      searchCurrentIndex + 30
+    );
   }
 }
 
 /* SEARCH FUNCTION */
 
-
 function search() {
+  searchMeteoriteInfo = [];
   let searchText = document.querySelector("#searchText").value.toLowerCase();
   let cappedSearchText =
     searchText.slice(0, 1).toUpperCase() + searchText.slice(1);
@@ -154,11 +154,11 @@ function search() {
   }
 
   clearData();
-  meteorSearchInfo = [];
 
   if (document.querySelector("#startsWith").checked) {
     let search = encodeURIComponent(cappedSearchText);
     let url = `${searchByNameStart[0]}${search}${searchByNameStart[1]}`;
+    console.log(`search: ${search}\nurl: ${url}`);
     searchAPICall(url);
   } else if (document.querySelector("#includes").checked) {
     let search = encodeURIComponent(searchText);
