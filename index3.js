@@ -166,9 +166,9 @@ function search() {
   } else if (document.querySelector("#includes").checked) {
     let search = encodeURIComponent(searchText);
     let url = `${searchByNameIncludes[0]}${search}${searchByNameIncludes[1]}`;
-    let search2 = encodeURIComponent(cappedSearchText);
-    let url2 = `${searchByNameStart[0]}${search2}${searchByNameStart[1]}`;
-    searchAPICall(url2, true, url);
+    // let search2 = encodeURIComponent(cappedSearchText);
+    // let url2 = `${searchByNameStart[0]}${search2}${searchByNameStart[1]}`;
+    searchAPICall(url);
   } else {
     let search = encodeURIComponent(cappedSearchText);
     let url = `${searchByNameExact}${search}`;
