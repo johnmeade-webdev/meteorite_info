@@ -50,10 +50,14 @@ let searchByNameStart = [
   "https://data.nasa.gov/resource/gh4g-9sfh.json?$where=starts_with(name,%20%27",
   "%27)"
 ];
+// let searchByNameIncludes = [
+//   "https://data.nasa.gov/resource/gh4g-9sfh.json?$where=name%20like%20%27%25",
+//   "%25%27"
+// ];
 let searchByNameIncludes = [
-  "https://data.nasa.gov/resource/gh4g-9sfh.json?$where=name%20like%20%27%25",
-  "%25%27"
-];
+    "https://data.nasa.gov/resource/gh4g-9sfh.json?$where=lower(name)%20like%20lower(%27%25",
+    "%25%27)"
+  ];
 let searchByNameExact = "https://data.nasa.gov/resource/gh4g-9sfh.json?name=";
 
 function searchAPICall(url, tryAgain = false, tryURL = "") {
@@ -268,3 +272,19 @@ function clearData() {
 }
 
 
+console.log('      __      ___       ___ ');
+console.log('     |  |    |    \\    /   |');
+console.log('     |  |    |     \\__/    |');
+console.log('     |  |    |    _    _   |');
+console.log('     |  |    |  |  \\__/ |  |');
+console.log('  ___/  /    |  |       |  |');
+console.log(' |_____/     |__|       |__|');
+
+
+//      __      ___       ___ 
+//     |  |    |   \\    /   |
+//     |  |    |    \\__/    |
+//     |  |    |    _   _    |
+//     |  |    |  |  \\_/ |  |
+//  ___/  /    |  |       |  |
+// |_____/     |__|       |__|
